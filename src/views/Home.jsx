@@ -13,6 +13,8 @@ const Home = () => {
 		useFirestore();
 	const [newOriginID, setNewOriginID] = useState(); // Estado para mantener la URL editada
 	const [editUrl, setEditUrl] = useState("");
+	
+	
 
 	useEffect(() => {
 		getData();
@@ -27,7 +29,6 @@ const Home = () => {
 
 	const onSubmit = async ({ url }, { setSubmitting, resetForm }) => {
 		try {
-			console.log("Pase por aqui");
 			if (newOriginID) {
 				
 				await updateData(newOriginID, url);

@@ -33,10 +33,9 @@ export const router = createBrowserRouter([
 			{
 				element: <LayoutPrivate />,
 				path: "/",
-			
 				children: [
 					{
-						index: "true",
+						index: true,
 						element: <Home />,
 					},
 					{
@@ -45,7 +44,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: "/:nanoid",
-						element: <LayoutRedirect />
+						element: <LayoutRedirect />,
 					}
 				]
 			}

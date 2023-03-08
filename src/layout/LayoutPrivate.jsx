@@ -4,21 +4,19 @@ import NavBar from "../components/NavBar";
 import { useUserContext } from "../context/UserProvider";
 
 const LayoutPrivate = () => {
+	const { user } = useUserContext();
+	const navigate = useNavigate();
 
-    const {user} = useUserContext()
-    const navigate = useNavigate()
-    
+	useEffect(() => {
+		if (!user) {
+			navigate("/login");
+		}
+	});
 
-    useEffect(() => {
-        if (!user) {
-           navigate("/login");
-        }
-       })
-        
-    return (
-        <>
-        <Outlet></Outlet>
-        </>
-  );
+	return (
+		<>
+			<Outlet></Outlet>
+		</>
+	);
 };
 export default LayoutPrivate;

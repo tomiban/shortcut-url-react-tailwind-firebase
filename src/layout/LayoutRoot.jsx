@@ -24,7 +24,7 @@ const LayoutRoot = () => {
 				/>
 				<Outlet />
 			</main>
-			<footer className='container'>Footer</footer>
+			
 		</>
 	);
 };
