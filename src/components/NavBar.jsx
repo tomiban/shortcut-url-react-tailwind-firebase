@@ -27,12 +27,12 @@ const NavBar = () => {
 						to='/'
 						className='flex items-center'>
 						<img
-							src='https://flowbite.com/docs/images/logo.svg'
+							src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/98/null/external-link-web-seo-prettycons-lineal-color-prettycons.png"
 							className='h-6 mr-3 sm:h-9'
 							alt='Flowbite Logo'
 						/>
 						<span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
-							React + Firebase
+							Acortador URL
 						</span>
 					</Link>
 					<div className='flex items-center  md:order-2'>

@@ -13,8 +13,6 @@ const Home = () => {
 		useFirestore();
 	const [newOriginID, setNewOriginID] = useState(); // Estado para mantener la URL editada
 	const [editUrl, setEditUrl] = useState("");
-	
-	
 
 	useEffect(() => {
 		getData();
@@ -30,17 +28,17 @@ const Home = () => {
 	const onSubmit = async ({ url }, { setSubmitting, resetForm }) => {
 		try {
 			if (newOriginID) {
-				
 				await updateData(newOriginID, url);
 				setNewOriginID("");
+				setEditUrl("");
 			} else {
 				addData(url);
-				resetForm();
 			}
 		} catch (error) {
 			console.log(error.message);
 		} finally {
 			setSubmitting(false);
+			resetForm();
 		}
 	};
 
@@ -72,6 +70,14 @@ const Home = () => {
 		});
 	};
 
+	const initializeFormValues = (setValues) => {
+		if (editUrl) {
+			setValues({ url: editUrl });
+		} else {
+			setValues({ url: "" });
+		}
+	};
+
 	const pathURL = window.location.href;
 
 	if (error) return <h4>{error}</h4>;
@@ -84,7 +90,8 @@ const Home = () => {
 				initialValues={{ url: "" }}
 				onSubmit={onSubmit}
 				validationSchema={validationSchema}
-				enableReinitialize={true}>
+				enableReinitialize={true}
+				key={editUrl}>
 				{({
 					values,
 					handleSubmit,
@@ -96,13 +103,13 @@ const Home = () => {
 					setValues,
 				}) => {
 					useEffect(() => {
-						if (editUrl) {
-							setValues({ url: editUrl });
-						}
+						initializeFormValues(setValues);
 					}, [editUrl, setValues]);
 
 					return (
-						<form className='flex' onSubmit={handleSubmit}>
+						<form
+							className='flex'
+							onSubmit={handleSubmit}>
 							<div className='flex flex-grow'>
 								<span className=' inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border-2 border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'>
 									<i className='fa-solid fa-link'></i>
@@ -145,7 +152,7 @@ const Home = () => {
 									className='ml-2'
 								/>
 							)}
-							
+
 							{errors.url && touched.url && <p>{errors.url}</p>}
 						</form>
 					);
@@ -153,7 +160,7 @@ const Home = () => {
 			</Formik>
 
 			{loading.getData && <Loading />}
-			<div className="">
+			<div className=''>
 				{data.map((item) => (
 					<div
 						key={item.nanoid}

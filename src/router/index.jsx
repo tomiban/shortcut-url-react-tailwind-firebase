@@ -7,8 +7,6 @@ import LayoutRoot from "../layout/LayoutRoot";
 import Home from "../views/Home";
 import Login from "../views/Login";
 import NotFound from "../views/NotFound";
-import Perfil from "../views/Perfil";
-import Posts from "../views/Posts";
 import Register from "../views/Register";
 
 export const router = createBrowserRouter([
@@ -37,10 +35,6 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <Home />,
-					},
-					{
-						path: "perfil",
-						element: <Perfil />,
 					},
 					{
 						path: "/:nanoid",
