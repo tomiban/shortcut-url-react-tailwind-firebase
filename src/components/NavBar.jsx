@@ -31,7 +31,7 @@ const NavBar = () => {
 							className='h-6 mr-3 sm:h-9'
 							alt='Flowbite Logo'
 						/>
-						<span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
+						<span className='self-center  font-semibold whitespace-nowrap dark:text-white text-purple-900 font-mono text-2xl'>
 							Acortador URL
 						</span>
 					</Link>
